@@ -26,21 +26,24 @@ const ProductDisplay = ({ product, onAddToCart }) => {
 
     const [isFavorite, setIsFavorite] = useState({});
 
-    const [isVisible, setIsVisible] = useState(true);
+    const [isVisible, setIsVisible] = useState({});
+    const [isAddToCartDisabled, setIsAddToCartDisabled] = useState(false); 
 
     const toggleFavorite = (productId) => {
       setIsFavorite((prevFavorites) => ({
         ...prevFavorites,
         [productId]: !prevFavorites[productId],
       }));
+    setIsAddToCartDisabled(true);
     };
 
   // Function to toggle visibility
    const toggleVisibility = (productId) => {
      alert("We'll show this less.");
-     
-  setIsVisible((prev) => !prev);
-
+     setIsVisible((prevVisibility) => ({
+       ...prevVisibility,
+       [productId]: !prevVisibility[productId],
+     }));
    };
 
 
@@ -57,6 +60,12 @@ const ProductDisplay = ({ product, onAddToCart }) => {
       alert(`Added ${selectedProduct.name} to cart!`);
     };
 
+     const handleProductMouseOver = (productId) => {
+       if (!isVisible[productId]) {
+         handleProductClick(productId);
+       }
+     };
+     
     const handleProductClick = (productId) => {
      const clickedProduct = products.find(
        (product) => product.id === productId
@@ -85,16 +94,14 @@ const ProductDisplay = ({ product, onAddToCart }) => {
           <div key={product.id} className="">
             <div
               className="relative flex items-center justify-center shadow-md bg-gray-100 h-64 max-w-72 duration-300"
-              onMouseOver={() => handleProductClick(product.id)}
+              onMouseOver={() => handleProductMouseOver(product.id)}
               onMouseLeave={handleProductMouseLeave}
             >
               <img
                 src={product.image}
                 alt={product.name}
                 className={`object-cover ${
-                  isVisible[product.id] && !productVisibility[product.id]
-                    ? "blur"
-                    : ""
+                  isVisible[product.id] ? "blur" : ""
                 }`}
               />
               {product.isNew && (
@@ -120,7 +127,7 @@ const ProductDisplay = ({ product, onAddToCart }) => {
                 />
               </div>
               {showAddToCart && selectedProduct.id === product.id && (
-                <div className="absolute flex flex-col gap-2 w-[17rem] bottom-0">
+                <div className="absolute flex flex-col gap-2 w-[14.5rem] bottom-0">
                   <button
                     className="bg-black text-white py-3 rounded-b-lg"
                     onClick={handleAddToCart}
