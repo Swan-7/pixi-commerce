@@ -5,6 +5,10 @@
   --secondary-color: #DB4444;
 }
 
+.blur {
+  filter: blur(5px);
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;

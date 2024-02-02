@@ -561,7 +561,7 @@ const Checkout = () => {
                                             
                                             <div>
                                                 <h2 className='text-left py-8 text-gray-900 text-sm font-md '>We think you might like these</h2>
-                                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-9">
+                                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-9 mx-6">
                                             {products.slice(0, displayedProducts).map((product) => (
                                                 <div key={product.id} className="">
                                                 <div className="relative flex items-center justify-center shadow-md bg-gray-100 h-64 max-w-72 duration-300"
@@ -654,7 +654,7 @@ const Checkout = () => {
 
                 {/* Disclaimer */}
                 {currentStep !== 4 && (
-                    <div className="mt-8 p-4 bg-gray-200 text-xs w-2/3 xl:w-4/5 lg:w-full xl:w-[45%] rounded mx-auto flex items-center justify-center gap-2">
+                    <div className="mt-8 p-4 bg-gray-200 text-xs w-full xl:w-11/12 lg:w-full 2xl:w-[45%] rounded mx-auto flex items-center justify-center gap-2">
                     <img src={info} alt="" />
                     <p className="text-xs lg:text-[0.65rem]">
                         Our checkout is safe and secure. Your personal and payment information is securely transmitted via 128-bit encryption. We do not store any payment card information on our systems
@@ -664,7 +664,7 @@ const Checkout = () => {
             </div>
 
             {/* Footer */}
-            <div className="mt-8 p-4 bg-white text-gray-400 text-xs w-2/3 xl:w-4/5 lg:w-full xl:w-[45%] mx-auto">
+            <div className="mt-8 p-4 bg-white text-gray-400 text-xs w-full xl:w-11/12 lg:w-full 2xl:w-[45%] mx-auto">
                 <div className="flex justify-between items-center">
                     {/* Links to terms of use, privacy policy, etc. */}
                     <div>
