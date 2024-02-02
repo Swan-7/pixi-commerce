@@ -98,7 +98,7 @@ const ProductDisplay = ({ product, onAddToCart }) => {
                 }`}
               />
               {product.isNew && (
-                <div className="bg-green-400 text-white py-1 px-2 text-xs rounded-sm absolute -left-[18.5rem] top-3">
+                <div className="bg-green-400 text-white py-1 px-2 text-xs rounded-sm absolute -left-[15.5rem] top-3">
                   NEW
                 </div>
               )}
